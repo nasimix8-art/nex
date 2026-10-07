@@ -1,8 +1,11 @@
+"use client"
 import { usePathname } from 'next/navigation'
 import React from 'react'
-"use client"
 
-function navbar() {
+import Link from "next/link"
+
+
+function Navbar() {
     const pathname=usePathname()
     const navlinks = [{
         href: "/",
@@ -20,15 +23,15 @@ function navbar() {
     ]
     return (
         <>
-            <div className='w-full h-20 bg-white '>
+            <div className='w-full h-20 bg-white flex items-center gap-5 justify-end p-5'>
                 {navlinks.map((items) => (
-                    <link className={`${pathname===items.href? "text-blue-400":""}`}key={items.href} href={items.href}>
+                    <Link className={`${pathname===items.href? "text-blue-400":"text-black"}`}key={items.href} href={items.href}>
                         {items.title}
-                    </link>
+                    </Link>
                 ))}
             </div>
         </>
     )
 }
 
-export default navbar
+export default Navbar
